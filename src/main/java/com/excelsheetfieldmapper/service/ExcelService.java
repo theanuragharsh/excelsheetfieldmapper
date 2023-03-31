@@ -5,5 +5,5 @@ import java.io.IOException;
 import java.util.List;
 
 public interface ExcelService {
-    List<String>  processDuplicates(File tempFile) throws IOException;
+    List<String>  findDuplicates(File tempFile) throws IOException;
 }
