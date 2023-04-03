@@ -1,6 +1,6 @@
 package com.excelsheetfieldmapper.service.impl;
 
-import com.excelsheetfieldmapper.exceptions.ExcelFileProcessingException;
+import com.excelsheetfieldmapper.exception.ExcelFileProcessingException;
 import com.excelsheetfieldmapper.service.ExcelService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.EncryptedDocumentException;
