@@ -2,6 +2,7 @@ package com.excelsheetfieldmapper.controller;
 
 import com.excelsheetfieldmapper.service.ExcelService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 public class ExcelController {
@@ -23,7 +25,8 @@ public class ExcelController {
         file.transferTo(tempFile);
         List<String> duplicates = excelService.findDuplicates(tempFile);
         if (tempFile.delete())
-            System.out.println("Temp file deleted");
+            log.debug("Temp file deleted");
         return duplicates;
     }
+
 }
