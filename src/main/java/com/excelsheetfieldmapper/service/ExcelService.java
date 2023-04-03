@@ -1,9 +1,12 @@
 package com.excelsheetfieldmapper.service;
 
-import java.io.File;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.io.IOException;
 import java.util.List;
 
 public interface ExcelService {
-    List<String>  findDuplicates(File tempFile) throws IOException;
+
+    List<String> findDuplicates(MultipartFile multipartFile) throws IOException;
+
 }

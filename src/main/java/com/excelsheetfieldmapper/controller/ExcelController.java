@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -21,12 +20,6 @@ public class ExcelController {
 
     @PostMapping("/excel/duplicate/fields")
     public List<String> processExcel(@RequestParam("file") MultipartFile file) throws IOException {
-        File tempFile = File.createTempFile("Test", ".xlsx");
-        file.transferTo(tempFile);
-        List<String> duplicates = excelService.findDuplicates(tempFile);
-        if (tempFile.delete())
-            log.debug("Temp file deleted");
-        return duplicates;
+        return excelService.findDuplicates(file);
     }
-
 }
