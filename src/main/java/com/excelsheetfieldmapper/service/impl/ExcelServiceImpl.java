@@ -1,5 +1,6 @@
 package com.excelsheetfieldmapper.service.impl;
 
+import com.excelsheetfieldmapper.exceptions.ExcelFileProcessingException;
 import com.excelsheetfieldmapper.service.ExcelService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.EncryptedDocumentException;
@@ -7,7 +8,6 @@ import org.apache.poi.ss.usermodel.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -35,7 +35,7 @@ public class ExcelServiceImpl implements ExcelService {
             }));
         } catch (EncryptedDocumentException | IOException e) {
             log.error("ERROR while processing workbook", e);
-            throw new RuntimeException("Error while processing excel file", e);
+            throw new ExcelFileProcessingException("ERROR while processing workbook", e.getCause());
         }
         return duplicates;
     }
