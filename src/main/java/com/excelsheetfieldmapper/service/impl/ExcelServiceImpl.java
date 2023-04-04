@@ -42,7 +42,7 @@ public class ExcelServiceImpl implements ExcelService {
             );
         } catch (EncryptedDocumentException | IOException e) {
             log.error("ERROR while processing workbook", e);
-            throw new ExcelFileProcessingException("ERROR while processing workbook", e.getCause());
+            throw new ExcelFileProcessingException("ERROR while processing workbook");
         }
         return new ResponseEntity<>(duplicates, HttpStatus.OK);
     }
